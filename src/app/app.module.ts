@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TweetsService } from './tweets.service';
 import { TweetListComponent } from './tweet-list/tweet-list.component';
 import { TweetComponent } from './tweet/tweet.component';
+import { FormsModule }   from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [TweetsService],
