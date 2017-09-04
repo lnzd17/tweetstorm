@@ -19,7 +19,7 @@ export class MainPageComponent implements OnInit {
     });
   }
 
-  search(keyword: string) {
+  search = (keyword: string) => {
     localStorage.setItem("lastQuery", keyword);
     this.service.getTweets(keyword).subscribe( (tweets) => {
       this.tweets = tweets.statuses;
