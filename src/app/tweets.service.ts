@@ -17,6 +17,13 @@ export class TweetsService {
     .catch(this.handleError);
   }
 
+  getHashtagTweets(hashtag: string) {
+    const url = `http://twitter-api-lkd.herokuapp.com/tweets?hashtag=${hashtag}`;
+    return this.http.get(url)
+    .map(this.extractData)
+    .catch(this.handleError);
+  }
+
   extractData(res: Response) {
     return res;
   }

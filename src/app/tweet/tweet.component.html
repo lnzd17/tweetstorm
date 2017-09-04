@@ -9,5 +9,7 @@
        - {{tweet['created_at'] | date:'short'}}
      </span>
   </a>
-  {{tweet['text']}}
+  <a href="https://twitter.com/statuses/{{tweet['id_str']}}">
+    {{tweet['text']}}
+  </a>
 </div>
