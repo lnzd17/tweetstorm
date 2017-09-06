@@ -13,11 +13,14 @@ import { TweetComponent } from './tweet/tweet.component';
 import { FormsModule }   from '@angular/forms';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { HashtagComponent } from './hashtag/hashtag.component';
+import { UserComponent } from './user/user.component';
+import { UserService } from './user.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'about', component: AboutPageComponent },
-  { path: 'hashtag/:hashtag', component: HashtagComponent}
+  { path: 'hashtag/:hashtag', component: HashtagComponent},
+  { path: 'user/:username', component: UserComponent}
 ];
 
 @NgModule({
@@ -28,7 +31,8 @@ const appRoutes: Routes = [
     TweetListComponent,
     TweetComponent,
     SearchbarComponent,
-    HashtagComponent
+    HashtagComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [TweetsService],
+  providers: [TweetsService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
