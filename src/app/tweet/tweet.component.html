@@ -1,15 +1,31 @@
 <img *ngIf="tweet && tweet['user']" src="{{tweet['user']['profile_image_url']}}" alt="profile" />
 <div>
-  <a *ngIf="tweet && tweet['user']" class="user-details" href="#">
-    <span class="name">{{tweet['user']['name']}}</span>
-     <span class="screen-name">
-       @{{tweet['user']['screen_name']}}
-     </span>
-     <span class="date">
-       - {{tweet['created_at'] | date:'short'}}
-     </span>
-  </a>
-  <a href="https://twitter.com/statuses/{{tweet['id_str']}}">
-    {{tweet['text']}}
-  </a>
+  <ng-container *ngIf="tweet && tweet['user']">
+      <a class="user-details"
+         [routerLink]="['/user', tweet['user']['screen_name']]">
+         <span class="name">{{tweet['user']['name']}}</span>
+         <span class="screen-name">
+           @{{tweet['user']['screen_name']}}
+         </span>
+         <span class="date">
+           - {{tweet['created_at'] | date:'short'}}
+         </span>
+     </a>
+  </ng-container>
+  <ng-container *ngFor="let part of parse()">
+    <a *ngIf="part.type ==='hashtag'"
+       [routerLink]="['/hashtag', part.value.slice(1, part.value.length)]">
+      {{part.value}}
+    </a>
+    <a *ngIf="part.type ==='mention'"
+       [routerLink]="['/user', part.value.slice(1, part.value.length)]">
+      {{part.value}}
+    </a>
+    <a class='tweet-link' *ngIf="part.type ==='url'" href="{{part.value}}">
+      {{part.value}}
+    </a>
+    <ng-container *ngIf="part.type === undefined;">
+      {{part.value}}
+    </ng-container>
+  </ng-container>
 </div>

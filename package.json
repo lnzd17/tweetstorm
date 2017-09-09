@@ -25,6 +25,7 @@
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
     "express": "^4.15.4",
+    "parse-tweet": "^1.0.0",
     "rxjs": "^5.4.2",
     "ts-node": "~3.2.0",
     "typescript": "~2.3.3",
