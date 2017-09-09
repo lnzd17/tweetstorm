@@ -1,2 +1,46 @@
-<div class="username">@{{username}}</div>
-{{userData | json}}
+<div class="user-container">
+  <div class="banner">
+    <img src="{{profile_banner_url}}" alt="banner">
+  </div>
+  <img src="{{profile_image_url}}" class="avatar "alt="avatar">
+  <div class="stats">
+    <div class="tweets">
+      <span class="title">TWEETS</span>
+      <span class="total">{{tweets}}</span>
+    </div>
+    <div class="following">
+      <span class="title">FOLLOWING</span>
+      <span class="total">{{following}}</span>
+    </div>
+    <div class="followers">
+      <span class="title">FOLLOWERS</span>
+      <span class="total">{{followers}}</span>
+    </div>
+    <div class="likes">
+      <span class="title">LIKES</span>
+      <span class="total">{{likes}}</span>
+    </div>
+    <div class="lists">
+      <span class="title">LISTS</span>
+      <span class="total">{{lists}}</span>
+    </div>
+  </div>
+  <div class="details-container">
+    <div class="details">
+      <h2 class="name">{{name}}</h2>
+      <div class="username">{{username}}</div>
+      <div class="description">{{description}}</div>
+      <div class="location">
+        <span>🌏</span>
+        {{location}}
+      </div>
+      <div class="joined">
+        <span>📅</span>
+        Joined {{joined | date:'MMMM y'}}
+      </div>
+      <div class="tweet">
+        <app-tweet [tweet]="latest_tweet" *ngIf="latest_tweet"></app-tweet>
+      </div>
+    </div>
+  </div>
+</div>
